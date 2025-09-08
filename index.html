@@ -53,19 +53,8 @@
 <footer>
   <div class="footer-container">
 
-    <!-- Liens utiles -->
-    <div class="footer-section liens-utiles">
-      <h3>À propos</h3>
-      <ul>
-        <li><a href="#">Lien 1</a></li>
-        <li><a href="#">Lien 2</a></li>
-        <li><a href="#">Lien 3</a></li>
-      </ul>
-    </div>
 
-
-
-    <div class="footer-section contact-section">
+    <div class="footer-section">
       <h3 class="toggle-contact">
         À propos
         <span class="chevron"><i class="fa-solid fa-chevron-down"></i></span>
@@ -83,10 +72,8 @@
 
 
 
-
-
     <!-- Contact dépliable -->
-    <div class="footer-section contact-section">
+    <div class="footer-section">
       <h3 class="toggle-contact">
         Liens utiles
         <span class="chevron"><i class="fa-solid fa-chevron-down"></i></span>
@@ -101,7 +88,7 @@
       </div>
     </div>
 
-    <div class="footer-section contact-section">
+    <div class="footer-section">
       <h3 class="toggle-contact">
         Contact
         <span class="chevron"><i class="fa-solid fa-chevron-down"></i></span>
@@ -127,7 +114,7 @@
 
 
     <!-- Réseaux sociaux -->
-    <div class="footer-section">
+    <div class="footer-section social">
       <h3>Suivez-nous</h3>
       <div class="social-icons">
         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -139,11 +126,21 @@
 
   </div>
 
-  <!-- Bas du footer -->
-  <div class="footer-bottom">
-    <p>© 2025 MonSite. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+
+
+
+<div class="footer-bottom">
+  <div class="footer-bottom-container">
+    <nav class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Politique de confidentialité</a>
+    </nav>
+    <p class="copyright">
+      © 2025 MonSite. Tous droits réservés.
+    </p>
   </div>
-</footer>
+</div>
+
 
 
 <script>
@@ -154,29 +151,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const section = toggle.parentElement;
     const content = section.querySelector('.contact-content');
 
-    if (window.innerWidth <= 600) {
-      toggle.addEventListener('click', () => {
-        if (section.classList.contains('active')) {
-          content.style.height = content.scrollHeight + 'px';
-          requestAnimationFrame(() => {
-            content.style.height = '0';
-          });
-        } else {
-          content.style.height = content.scrollHeight + 'px';
-        }
-        section.classList.toggle('active');
-      });
-
-      content.addEventListener('transitionend', () => {
-        if (section.classList.contains('active')) {
-          content.style.height = 'auto';
-        }
-      });
+    // Desktop : forcer l'affichage
+    if (window.innerWidth > 600) {
+      content.style.height = 'auto';
+      content.style.overflow = 'visible';
+      section.classList.remove('active'); // juste pour être sûr que mobile n'interfère pas
+      return;
     }
+
+    // Mobile : toggle click
+    toggle.addEventListener('click', () => {
+      if (section.classList.contains('active')) {
+        // Fermeture
+        content.style.height = content.scrollHeight + 'px';
+        content.offsetHeight;
+        content.style.height = '0';
+        section.classList.remove('active');
+      } else {
+        // Ouverture
+        content.style.height = '0';
+        section.classList.add('active');
+        content.offsetHeight;
+        content.style.height = content.scrollHeight + 'px';
+      }
+    });
+
+    content.addEventListener('transitionend', () => {
+      if (section.classList.contains('active')) {
+        content.style.height = 'auto';
+      }
+    });
   });
 });
 </script>
-
 
 
 
