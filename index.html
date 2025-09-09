@@ -3,198 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon Site</title>
-
-  <!-- CSS principal -->
+  <title>Navbar Fullscreen Right</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="section-1.css">
 
-  <!-- Font Awesome pour les icônes -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts : Metropolis -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Metropolis:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 
+<header class="navbar">
+  <div class="navbar-container">
+    <a href="#" class="logo">MonSite</a>
 
-
-
-
-  <!-- Contenu principal -->
-  <main>
-    <section class="texte-section">
-      <div class="container">
-        <h2>À propos de notre site</h2>
-        <p>
-          Bienvenue sur notre site web ! Nous proposons des solutions modernes et efficaces pour tous vos besoins numériques.
-          Notre équipe est passionnée par l’innovation et s’engage à offrir une expérience utilisateur optimale. Bienvenue sur notre site web ! Nous proposons des solutions modernes et efficaces pour tous vos besoins numériques.
-          Notre équipe est passionnée par l’innovation et s’engage à offrir une expérience utilisateur optimale.
-        </p>
-        <p>
-          Que vous soyez à la recherche d’informations, de services personnalisés ou d’inspiration, vous trouverez ici
-          tout ce dont vous avez besoin pour naviguer dans le monde numérique avec confiance.
-        </p>
-      </div>
-    </section>
-  </main>
-
-
-
-
-
-
-
-
-<!-- Footer -->
-<footer>
-  <div class="footer-container">
-
-
-    <div class="footer-section">
-      <h3 class="toggle-contact">
-        À propos
-        <span class="chevron"><i class="fa-solid fa-chevron-down"></i></span>
-      </h3>
-      <div class="contact-content">
-        <ul>
-          <li><a href="#">Lien 1</a></li>
-          <li><a href="#">Lien 2</a></li>
-          <li><a href="#">Lien 3</a></li>
-        </ul>
-      </div>
-    </div>
-
-
-
-
-
-    <!-- Contact dépliable -->
-    <div class="footer-section">
-      <h3 class="toggle-contact">
-        Liens utiles
-        <span class="chevron"><i class="fa-solid fa-chevron-down"></i></span>
-      </h3>
-      <div class="contact-content">
-        <ul>
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">À propos</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-section">
-      <h3 class="toggle-contact">
-        Contact
-        <span class="chevron"><i class="fa-solid fa-chevron-down"></i></span>
-      </h3>
-      <div class="contact-content">
-        <p class="contact-icons">
-          Adresse : <a href="https://www.google.com/maps/place/Paris,+France" target="_blank">Paris, France</a>
-        </p>
-        <p class="contact-icons">
-          Tél. : <a href="tel:+33612345678">+33 6 12 34 56 78</a>
-        </p>
-        <p class="contact-icons">
-          Mail : <a href="mailto:contact@monsite.com">contact@monsite.com</a>
-        </p>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-    <!-- Réseaux sociaux -->
-    <div class="footer-section social">
-      <h3>Suivez-nous</h3>
-      <div class="social-icons">
-        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-      </div>
-    </div>
-
-  </div>
-
-
-
-
-<div class="footer-bottom">
-  <div class="footer-bottom-container">
-    <nav class="footer-links">
-      <a href="#">Mentions légales</a>
-      <a href="#">Politique de confidentialité</a>
+    <!-- Menu desktop -->
+    <nav class="nav-menu desktop">
+      <a href="#">Accueil</a>
+      <a href="#">Services</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+      <a href="#" class="btn">S'inscrire</a>
     </nav>
-    <p class="copyright">
-      © 2025 MonSite. Tous droits réservés.
-    </p>
+
+    <!-- Burger pour mobile -->
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
-</div>
+
+  <!-- Menu mobile -->
+  <nav class="nav-menu mobile" id="nav-menu">
+    <a href="#">Accueil</a>
+    <a href="#">Services</a>
+    <a href="#">À propos</a>
+    <a href="#">Contact</a>
+    <a href="#" class="btn">S'inscrire</a>
+  </nav>
+</header>
 
 
+  <script>
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('nav-menu');
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggles = document.querySelectorAll('.toggle-contact');
-
-  toggles.forEach(toggle => {
-    const section = toggle.parentElement;
-    const content = section.querySelector('.contact-content');
-
-    // Desktop : forcer l'affichage
-    if (window.innerWidth > 600) {
-      content.style.height = 'auto';
-      content.style.overflow = 'visible';
-      section.classList.remove('active'); // juste pour être sûr que mobile n'interfère pas
-      return;
-    }
-
-    // Mobile : toggle click
-    toggle.addEventListener('click', () => {
-      if (section.classList.contains('active')) {
-        // Fermeture
-        content.style.height = content.scrollHeight + 'px';
-        content.offsetHeight;
-        content.style.height = '0';
-        section.classList.remove('active');
-      } else {
-        // Ouverture
-        content.style.height = '0';
-        section.classList.add('active');
-        content.offsetHeight;
-        content.style.height = content.scrollHeight + 'px';
-      }
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navMenu.classList.toggle('active');
     });
-
-    content.addEventListener('transitionend', () => {
-      if (section.classList.contains('active')) {
-        content.style.height = 'auto';
-      }
-    });
-  });
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
+  </script>
 
 </body>
 </html>
+
+
+
+
