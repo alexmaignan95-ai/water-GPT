@@ -14,7 +14,7 @@
 
 <header class="navbar">
   <div class="navbar-container">
-    <a href="#" class="logo">MonSite</a>
+    <a href="#" class="logo">Nom du Site.</a>
 
     <!-- Menu desktop -->
     <nav class="nav-menu desktop">
@@ -44,14 +44,49 @@
 </header>
 
 
+
+
+ <section class="long-section">
+    <h1>Bienvenue dans la section longue</h1>
+    <p>
+      Ceci est un exemple de section plus haute que la taille de l’écran.
+      Tu peux y mettre du texte, des images ou tout autre contenu pour
+      donner un effet de défilement.
+    </p>
+    <p>
+      Ajoute encore plus de contenu si tu veux qu’elle soit encore plus
+      longue. Le style utilise <code>min-height: 150vh</code>, ce qui veut
+      dire qu’elle occupe une fois et demie la hauteur de la fenêtre.
+    </p>
+    <p>
+      Tu peux aussi remplacer la couleur de fond par une image ou une
+      vidéo pour un effet plus immersif.
+    </p>
+  </section>
+
+
+
+
+
+
+
+
+
   <script>
     const burger = document.getElementById('burger');
-    const navMenu = document.getElementById('nav-menu');
+const navMenu = document.getElementById('nav-menu');
 
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('open');
-      navMenu.classList.toggle('active');
-    });
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navMenu.classList.toggle('active');
+
+  // Bloquer le scroll en arrière-plan
+  if (navMenu.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+});
   </script>
 
 </body>
