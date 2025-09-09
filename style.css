@@ -53,18 +53,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 .burger {
   display: none;
   flex-direction: column;
@@ -97,21 +85,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .long-section {
   min-height: 150vh; /* la section est plus grande que la hauteur de l’écran */
   background: white;
@@ -119,16 +92,6 @@ body {
   padding: 50px;
   margin-top:70px;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -225,4 +188,5 @@ body {
     display: flex;
   }
 }
+
 
