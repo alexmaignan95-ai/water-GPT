@@ -3,96 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar Fullscreen Right</title>
+  <title>Navbar Responsive - Alexandre Maignan</title>
+  
+  <!-- Google Fonts : Open Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS externe -->
   <link rel="stylesheet" href="style.css">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-
 </head>
-
 <body>
+  
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      
+      <!-- Logo sur deux lignes -->
+      <div class="logo">
+        <a href="#">
+          <span class="first-name">ALEXANDRE</span>
+          <span class="last-name">MAIGNAN</span>
+        </a>
+      </div>
 
+      <!-- Liens de navigation -->
+      <ul class="nav-links">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
 
-<header class="navbar">
-  <div class="navbar-container">
-    <a href="#" class="logo">Nom du Site.</a>
+      <!-- Burger menu pour mobile -->
+      <button class="burger" aria-label="ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <!-- Menu desktop -->
-    <nav class="nav-menu desktop">
-      <a href="#">Accueil</a>
-      <a href="#">Services</a>
-      <a href="#">À propos</a>
-      <a href="#">Contact</a>
-      <a href="#" class="btn">S'inscrire</a>
-    </nav>
-
-    <!-- Burger pour mobile -->
-    <button class="burger" id="burger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-
-  <!-- Menu mobile -->
-  <nav class="nav-menu mobile" id="nav-menu">
-    <a href="#">Accueil</a>
-    <a href="#">Services</a>
-    <a href="#">À propos</a>
-    <a href="#">Contact</a>
-    <a href="#" class="btn">S'inscrire</a>
+    </div>
   </nav>
-</header>
 
 
 <main>
 
- <section class="long-section">
-    <h1>Bienvenue dans la section longue</h1>
-    <p>
-      Ceci est un exemple de section plus haute que la taille de l’écran.
-      Tu peux y mettre du texte, des images ou tout autre contenu pour
-      donner un effet de défilement.
+
+<section class="hero">
+  <div class="hero-container">
+    <h1 class="hero-title">Contact</h1>
+    <p class="hero-text">
+      Des questions? Veuillez trouver ci-dessous le formulaire de contact
     </p>
-    <p>
-      Ajoute encore plus de contenu si tu veux qu’elle soit encore plus
-      longue. Le style utilise <code>min-height: 150vh</code>, ce qui veut
-      dire qu’elle occupe une fois et demie la hauteur de la fenêtre.
-    </p>
-    <p>
-      Tu peux aussi remplacer la couleur de fond par une image ou une
-      vidéo pour un effet plus immersif.
-    </p>
-  </section>
+  </div>
+</section>
 
 
 
+
+<div class="horizontal-bar-container">
+  <div class="horizontal-bar"></div>
+</div>
+
+
+
+<section class="section-1">
+  <div class="section-1-container">
+    <h1 class="section-1-title">Contactez-moi</h1>
+    <p class="section-1-text">
+      Vous cherchez à me contacter? Veuillez utiliser le formulaire ci dessous et je veillerais à vous recontacter ou répondre à votre demande dans les plus brefs délais.
+    </p>
+
+
+<div class="contact-form">
+  <form>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom">
+        <div class="underline"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Votre email">
+        <div class="underline"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Votre message" rows="1"></textarea>
+      <div class="underline"></div>
+    </div>
+
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+</section>
+
+
+
+
+
+
+
+<div class="horizontal-bar-container">
+  <div class="horizontal-bar"></div>
+</div>
 
 </main>
 
 
 
 
+
+
+  <!-- JS pour le burger menu -->
   <script>
-    const burger = document.getElementById('burger');
-const navMenu = document.getElementById('nav-menu');
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
 
-burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  navMenu.classList.toggle('active');
-
-  // Bloquer le scroll en arrière-plan
-  if (navMenu.classList.contains('active')) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-});
+    burger.addEventListener('click', () => {
+      const opened = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!opened));
+      navLinks.classList.toggle('open');
+    });
   </script>
+
+
+
+
+<script>
+  const textarea = document.querySelector('textarea');
+
+  textarea.addEventListener('input', () => {
+    textarea.style.height = 'auto';           // réinitialise la hauteur
+    textarea.style.height = textarea.scrollHeight + 'px'; // ajuste à la hauteur du contenu
+  });
+</script>
+
+
+
+
+
+
+
 
 </body>
 </html>
-
-
-
-
