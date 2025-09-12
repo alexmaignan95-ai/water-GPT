@@ -2,191 +2,340 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
 }
 
 body {
-  background: #f7f7f7;
-  color: #fff;
+  font-family: 'Open Sans', Arial, sans-serif;
+  background-color:  var(--bg-color);
+  color: #000;
+  padding-top: 90px; /* même hauteur que la navbar */
+}
+
+ /*#bdf0bd*/
+
+:root {
+  --bg-color:#bdf0bd;      /* couleur de fond principale */
+  --header-color: #000000;   /* couleur du texte du header */
+  --accent-color: #ff6347;   /* couleur secondaire */
+}
+
+
+
+
+
+
+
+
+
+
+.navbar {
+  width: 100%;
+  padding: 0 20px;
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
   width: 100%;
-  height: 70px;
-  background-color: black; 
-  z-index: 1000;
-}
-
-.navbar-container {
-  max-width: 1200px;
-  height: 100%;
-  margin: auto;
   padding: 0 20px;
+  position: fixed; /* fixe la navbar en haut */
+  top: 0;          /* top de l'écran */
+  left: 0;         /* aligne à gauche */
+  background-color: var(--bg-color); /* même couleur que body pour éviter transparence */
+  z-index: 1000;   /* s'assure que la navbar reste au-dessus du contenu */
+}
+
+
+
+
+
+
+/* Conteneur centré */
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center; /* aligne verticalement*/
+  justify-content: space-between; /* <-- clé pour logo à gauche, liens à droite */
+  border-bottom: 3px solid #000;
+  height: 90px;
 }
 
-.logo {
-  font-size: 26px;
-  font-weight: 700;
-  color: #ffffff; /* logo blanc */
-  text-decoration: none;
+.logo a {
+  font-weight: 700;             /* gras */
+  text-transform: uppercase;    /* majuscules */
+  text-decoration: none;        /* supprime le soulignement */
+  color: #000;
+  font-size: 1.5rem;
+  line-height: 1;             /* réduit l'espacement entre les lignes */
+  display: inline-block;        /* permet un alignement correct */
 }
 
+.logo a .first-name,
+.logo a .last-name {
+  display: block;               /* chaque partie sur sa propre ligne */
+}
 
-.nav-menu.desktop {
+.nav-links {
+  list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 80px;
+  margin-left: auto;  /* pousse le bloc de liens complètement à droite */
 }
 
-.nav-menu.desktop a {
+.nav-links a {
   text-decoration: none;
-  color: #ddd; /* gris clair */
-  font-size: 16px;
-  font-weight: 500;
-  padding: 5px 10px;
-  border-radius: 6px;
+  color: #000;
+  font-size: 1.3rem; 
 }
 
 
-
+/* Burger menu pour mobile */
 .burger {
-  display: none;
+  display: none; /* caché par défaut */
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
-  border: none;
-  background: transparent;
   cursor: pointer;
-  z-index: 1100;
+  background: none;
+  border: none;
 }
 
 .burger span {
   display: block;
-  width: 28px;
   height: 3px;
-  background: #fff; /* lignes blanches */
-  border-radius: 3px;
-  transition: all 0.4s ease;
+  width: 25px;
+  background: #000;
+  border-radius: 2px;
 }
 
-.burger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 5px);
-}
+/* ------------------- */
+/* RESPONSIVE           */
+/* ------------------- */
+@media (max-width: 768px) {
 
-.burger.open span:nth-child(2) {
-  opacity: 0;
-}
+  .nav-links {
+    position: absolute;
+    top: 90px; /* sous la navbar */
+    right: 0;
+    background: #bdf0bd;
+    flex-direction: column;
+    width: 200px;
+    padding: 20px;
+    gap: 20px;
+    display: none; /* caché par défaut */
+    border-left: 3px solid #000;
+  }
 
-.burger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -5px);
-}
-
-
-.long-section {
-  min-height: 150vh; /* la section est plus grande que la hauteur de l’écran */
-  background: white;
-  color: black;
-  padding: 50px;
-  margin-top:70px;
-}
-
-
-
-
-
-
-
-
-
-.nav-menu.mobile {
-  display: none;
-  flex-direction: column;
-  position: fixed;
-  top: 70px;
-  right: 0;
-  width: 100%;
-  height: calc(100vh - 70px);
-  background-color: black;
-  padding: 0 20px;
-  margin: 0;
-  transform: translateX(100%) ; /* décalage initial + léger rétrécissement */
-  opacity: 0;                              /* invisible au départ */
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  z-index: 1050;
-}
-
-.nav-menu.mobile.active {
-  transform: translateX(0) scale(1); /* position finale */
-  opacity: 1;                        /* visible */
-}
-
-/* Liens mobile */
-.nav-menu.mobile a {
-  display: block;
-  width: 100%;
-  padding: 18px 0;
-  font-size: 28px;
-  font-weight: 500;
-  color: #ddd; /* gris clair */
-  text-decoration: none;
-  line-height: 1;
-  border-bottom: 1px solid #444; /* trait horizontal */
-  opacity: 0;                      /* invisible initialement */
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-/* Animation des liens quand menu actif */
-.nav-menu.mobile.active a {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* Animation en cascade pour les liens */
-.nav-menu.mobile a:nth-child(1) { transition-delay: 0.05s; }
-.nav-menu.mobile a:nth-child(2) { transition-delay: 0.1s; }
-.nav-menu.mobile a:nth-child(3) { transition-delay: 0.15s; }
-.nav-menu.mobile a:nth-child(4) { transition-delay: 0.2s; }
-.nav-menu.mobile a:nth-child(5) { transition-delay: 0.25s; }
-
-.nav-menu.mobile a:first-child {
-  border-top: 1px solid #444; /* trait au-dessus du premier lien */
-}
-
-.nav-menu.mobile a:last-child {
-  border-bottom: none; /* pas de trait sous le dernier lien */
-}
-
-.nav-menu.mobile a:hover {
-  color: #4f46e5;
-  background-color: rgba(79,70,229,0.2);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-@media(max-width:768px){
-  .nav-menu.desktop {
-    display: none;
+  .nav-links.open {
+    display: flex; /* affiché quand burger cliqué */
   }
 
   .burger {
-    display: flex;
-  }
-
-  .nav-menu.mobile {
-    display: flex;
+    display: flex; /* visible en mobile */
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hero {
+  display: flex;
+  justify-content: center;   
+  padding: 100px 20px; /* 60px en haut et bas */
+}
+
+.hero-container {
+  max-width: 1400px;        
+  width: 100%;              
+  display: flex;
+  flex-direction: column;
+  text-align: left;         
+  /* plus de justify-content ici */
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 20px; /* espace entre le titre et le paragraphe */
+  max-width: 1000px;
+}
+
+.hero-text {
+  font-size: 1.5rem;
+  color: #000;
+  max-width: 700px;
+}
+
+
+
+
+
+
+
+.horizontal-bar-container {
+  display: flex;           /* active flexbox */
+  justify-content: center; /* centre la barre horizontalement */
+  width: 100%;             /* plein écran */
+  box-sizing: border-box;
+  padding: 0 20px;         /* padding horizontal identique à la navbar */
+}
+
+.horizontal-bar {
+  width: 100%;             /* prend toute la largeur disponible dans le container */
+  max-width: 1400px;       /* limite la largeur à celle de la navbar */
+  height: 3px;             /* hauteur de la ligne */
+  background-color: #000;  /* couleur de la barre */
+}
+
+
+
+
+
+
+
+
+.section-1 {
+  display: flex;
+  justify-content: center;   
+  padding: 50px 20px; /* 60px en haut et bas */
+}
+
+.section-1-container {
+  max-width: 1400px;        
+  width: 100%;              
+  display: flex;
+  flex-direction: column;
+  text-align: left;         
+  /* plus de justify-content ici */
+}
+
+.section-1-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 40px; /* espace entre le titre et le paragraphe */
+}
+
+.section-1-text {
+  font-size: 1.5rem;
+  color: #000;
+  margin-bottom: 70px; /* espace entre le titre et le paragraphe */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem; /* espace vertical entre les champs */
+}
+
+/* Pour Nom et Email sur la même ligne */
+.form-row {
+  display: flex;
+  gap: clamp(20px, 15vw, 15vw); /* gap adaptatif selon largeur de l'écran */
+  flex-wrap: wrap; /* permet de passer à la ligne si trop étroit */
+}
+
+.form-row .form-group {
+  flex: 1; /* chaque champ prend la moitié de l'espace */
+  display: flex;
+  flex-direction: column;
+  min-width: 200px; /* éviter que les champs deviennent trop petits */
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 30px; 
+  font-size: 1.5rem;
+}
+
+/* Inputs et textarea */
+.form-group input,
+.form-group textarea {
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 1.5;
+  background: transparent;
+  padding: 5px 0;
+  resize: none;
+}
+
+/* Textarea */
+.contact-form textarea {
+  width: 100%;
+  overflow: hidden; /* pour auto-grow */
+  margin-top: 30px;
+}
+
+/* Ligne sous le champ */
+.underline {
+  height: 3px;
+  background-color: #000;
+  width: 100%;
+  margin-top: 5px;
+  transition: height 0.3s ease;
+}
+
+
+
+/* Submit button */
+button[type="submit"] {
+  padding: 12px 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--bg-color);
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #333;
+}
+
+/* Responsive : sur mobile, empile les champs */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 2rem; /* réduit le gap sur mobile */
+  }
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* espace vertical entre les champs */
+}
+
+
+}
+
+
+
+
+
 
 
