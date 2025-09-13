@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Open Sans', Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
   background-color:  var(--bg-color);
   color: #000;
   padding-top: 90px; /* même hauteur que la navbar */
@@ -14,7 +14,7 @@ body {
  /*#bdf0bd*/
 
 :root {
-  --bg-color:#bdf0bd;      /* couleur de fond principale */
+  --bg-color:     #bdf0bd;      /* couleur de fond principale */
   --header-color: #000000;   /* couleur du texte du header */
   --accent-color: #ff6347;   /* couleur secondaire */
 }
@@ -55,7 +55,7 @@ body {
   display: flex;
   align-items: center; /* aligne verticalement*/
   justify-content: space-between; /* <-- clé pour logo à gauche, liens à droite */
-  border-bottom: 3px solid #000;
+  border-bottom: 4px solid #000;
   height: 90px;
 }
 
@@ -194,7 +194,7 @@ body {
 .horizontal-bar {
   width: 100%;             /* prend toute la largeur disponible dans le container */
   max-width: 1400px;       /* limite la largeur à celle de la navbar */
-  height: 3px;             /* hauteur de la ligne */
+  height: 4px;             /* hauteur de la ligne */
   background-color: #000;  /* couleur de la barre */
 }
 
@@ -209,6 +209,7 @@ body {
   display: flex;
   justify-content: center;   
   padding: 50px 20px; /* 60px en haut et bas */
+  padding-bottom: 80px;
 }
 
 .section-1-container {
@@ -292,13 +293,19 @@ body {
 
 /* Ligne sous le champ */
 .underline {
-  height: 3px;
+  height: 3px; 
   background-color: #000;
   width: 100%;
   margin-top: 5px;
-  transition: height 0.3s ease;
+  transform: scaleY(1);
+  transform-origin: center; /* ou bottom si tu veux qu’elle s’épaississe vers le haut */
+  transition: transform 0.2s ease;
 }
 
+/* Effet au focus */
+.form-group:focus-within .underline {
+  transform: scaleY(1.32); /* 3px × 1.33 ≈ 4px visuel */
+}
 
 
 /* Submit button */
