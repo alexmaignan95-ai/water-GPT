@@ -243,33 +243,37 @@ body {
 
 
 
-
-
+/* Conteneur du formulaire */
 .contact-form form {
   display: flex;
   flex-direction: column;
-  gap: 5rem; /* espace vertical entre les champs */
+  gap: 2.5rem; /* espace vertical entre les blocs */
 }
 
-/* Pour Nom et Email sur la même ligne */
+/* Ligne pour Nom + Email */
 .form-row {
   display: flex;
-  gap: clamp(20px, 15vw, 15vw); /* gap adaptatif selon largeur de l'écran */
-  flex-wrap: wrap; /* permet de passer à la ligne si trop étroit */
+  gap: 8rem; /* espace horizontal entre Nom et Email */
+  justify-content: flex-start;
 }
 
+/* Fixe une largeur aux deux champs */
 .form-row .form-group {
-  flex: 1; /* chaque champ prend la moitié de l'espace */
+  width: 300px;  /* largeur fixe */
   display: flex;
   flex-direction: column;
-  min-width: 200px; /* éviter que les champs deviennent trop petits */
-  padding-right: 100px;
 }
 
+/* Les autres champs (ex: message) prennent toute la largeur */
+.contact-form .form-group {
+  width: 100%;
+}
+
+/* Label */
 .form-group label {
   font-weight: bold;
-  margin-bottom: 30px; 
-  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
 }
 
 /* Inputs et textarea */
@@ -277,70 +281,62 @@ body {
 .form-group textarea {
   border: none;
   outline: none;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-family: 'Open Sans', Arial, sans-serif;
-  line-height: 1.5;
   background: transparent;
-  padding: 5px 0;
+  padding: 10px 0;
   resize: none;
+  width: 100%;
 }
 
 /* Textarea */
 .contact-form textarea {
-  width: 100%;
-  overflow: hidden; /* pour auto-grow */
-  margin-top: 30px;
+  margin-top: 1.5rem;
+  overflow: hidden;
 }
 
-/* Ligne sous le champ */
+/* Soulignement décoratif */
 .underline {
-  height: 3px; 
+  height: 2px;
   background-color: #000;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 0px;
   transform: scaleY(1);
-  transform-origin: center; /* ou bottom si tu veux qu’elle s’épaississe vers le haut */
+  transform-origin: center;
   transition: transform 0.2s ease;
 }
 
-/* Effet au focus */
 .form-group:focus-within .underline {
-  transform: scaleY(1.32); /* 3px × 1.33 ≈ 4px visuel */
+  transform: scaleY(1.3);
 }
 
-
-/* Submit button */
+/* Bouton */
 button[type="submit"] {
   padding: 12px 20px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: var(--bg-color);
   background-color: #000;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: auto; 
-  align-self: flex-start; /* évite le stretch */
+  align-self: flex-start;
 }
 
 button[type="submit"]:hover {
   background-color: #333;
 }
 
-/* Responsive : sur mobile, empile les champs */
+/* Responsive : sur mobile, empile Nom et Email */
 @media (max-width: 768px) {
   .form-row {
     flex-direction: column;
-    gap: 2rem; /* réduit le gap sur mobile */
+    gap: 1.5rem;
   }
 
-.contact-form form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem; /* espace vertical entre les champs */
-}
-
-
+  .form-row .form-group {
+    width: 100%; /* plein écran sur mobile */
+  }
 }
 
 
@@ -349,3 +345,68 @@ button[type="submit"]:hover {
 
 
 
+
+
+
+
+
+/* Responsive : sur mobile, empile Nom et Email */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 1.5rem; /* espace vertical modéré */
+  }
+
+  .form-row .form-group {
+    width: 100%; /* champs en pleine largeur */
+  }
+
+  .form-group label {
+    font-size: 1rem; /* texte du label un peu plus petit pour éviter la surcharge */
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1rem;   /* texte adapté aux écrans plus petits */
+    padding: 10px 0;   /* plus d’espace au toucher */
+  }
+
+  button[type="submit"] {
+    width: 100%;       /* bouton sur toute la largeur */
+    text-align: center;
+    padding: 14px;     /* plus de confort tactile */
+    font-size: 1.1rem; /* taille adaptée au mobile */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Version mobile */
+@media (max-width: 768px) {
+  .section-1-title {
+    font-size: 1.8rem;    /* un peu plus petit */
+    line-height: 1.3;     /* meilleure lisibilité sur petits écrans */
+    margin-bottom: 15px;  /* espace réduit */
+  }
+
+  .section-1-text {
+    font-size: 1.05rem;   /* texte plus adapté au mobile */
+    line-height: 1.5;     /* meilleure lisibilité */
+    margin-bottom: 40px;  /* réduit pour éviter les vides */
+    text-align: justify;  /* joli rendu en bloc */
+  }
+}
