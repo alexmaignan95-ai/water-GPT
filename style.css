@@ -14,7 +14,7 @@ body {
  /*#bdf0bd*/
 
 :root {
-  --bg-color:     #bdf0bd;      /* couleur de fond principale */
+  --bg-color:     white;      /* couleur de fond principale */
   --header-color: #000000;   /* couleur du texte du header */
   --accent-color: #ff6347;   /* couleur secondaire */
 }
@@ -84,7 +84,7 @@ body {
 .nav-links a {
   text-decoration: none;
   color: #000;
-  font-size: 1.3rem; 
+  font-size: 1.1rem; 
 }
 
 
@@ -222,13 +222,13 @@ body {
 }
 
 .section-1-title {
-  font-size: 3rem;
+  font-size: 2.3rem;
   font-weight: bold;
-  margin-bottom: 40px; /* espace entre le titre et le paragraphe */
+  margin-bottom: 20px; /* espace entre le titre et le paragraphe */
 }
 
 .section-1-text {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #000;
   margin-bottom: 70px; /* espace entre le titre et le paragraphe */
 
@@ -263,12 +263,13 @@ body {
   display: flex;
   flex-direction: column;
   min-width: 200px; /* éviter que les champs deviennent trop petits */
+  padding-right: 100px;
 }
 
 .form-group label {
   font-weight: bold;
   margin-bottom: 30px; 
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 /* Inputs et textarea */
@@ -276,7 +277,7 @@ body {
 .form-group textarea {
   border: none;
   outline: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: 'Open Sans', Arial, sans-serif;
   line-height: 1.5;
   background: transparent;
@@ -311,13 +312,15 @@ body {
 /* Submit button */
 button[type="submit"] {
   padding: 12px 20px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: var(--bg-color);
   background-color: #000;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: auto; 
+  align-self: flex-start; /* évite le stretch */
 }
 
 button[type="submit"]:hover {
